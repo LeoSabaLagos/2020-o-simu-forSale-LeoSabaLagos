@@ -2,11 +2,11 @@ import inmuebles.*
 import operacion.*
 import inmobiliaria.*
 import empleados.*
-
+import zonas.*
 
 describe "Punto 1"{
 	
-	var casota = new Casa(valor = 100000, tamanio = 200, cantidadAmbientes = 5, operacionPublicacion = "alquiler", zona = "lanus", estaReservada = false , clienteQueLaReservo = "leo" , empleadoQueLaReservo = "cra")
+	var casota = new Casa(valor = 100000, tamanio = 200, cantidadAmbientes = 5, operacionPublicacion = alquilerCasota, zona = lanus)
 	var alquilerCasota = new Alquiler(cantidadMeses = 5, inmueble = casota)
 	var ventaCasota = new Venta(inmueble = casota)
 	

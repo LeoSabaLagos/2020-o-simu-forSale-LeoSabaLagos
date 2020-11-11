@@ -19,9 +19,17 @@ class Inmueble {
 	// estara definido en cada subclase de Inmueble
 	
 	// Un cliente puede solicitar a un empleado realizar una reserva sobre una propiedad
-	var estaReservada
-	var clienteQueLaReservo
-	var empleadoQueLaReservo
+	var estaReservada = false
+	var clienteQueLaReservo = null
+	
+	method estaReservada() = estaReservada
+	
+	method reservarse(unCliente){
+		clienteQueLaReservo = unCliente
+		estaReservada = true
+	}
+	
+	method operacionPublicacion() = operacionPublicacion
 }
 
 class Casa inherits Inmueble{
