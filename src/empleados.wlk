@@ -25,12 +25,12 @@ class Empleado {
 		self.algunoLeConcretoUnInmuebleReservadoPorElOtro(otroEmpleado)
 		
 	method cerraronOperacionesEnLaMismaZona(otroEmpleado) = 
-		self.operacionesCerradas().map{operacion => operacion.inmueble().zona()}.intersecion(otroEmpleado.inmueblesReservados().map{inmueble=> inmueble.zona()})
+		not(self.operacionesCerradas().map{operacion => operacion.inmueble().zona()}.intersecion(otroEmpleado.inmueblesReservados().map{inmueble=> inmueble.zona()}).isEmpty())
 		or
-		otroEmpleado.operacionesCerradas().map{operacion => operacion.inmueble().zona()}.intersecion(self.inmueblesReservados().map{inmueble=> inmueble.zona()})
+		not(otroEmpleado.operacionesCerradas().map{operacion => operacion.inmueble().zona()}.intersecion(self.inmueblesReservados().map{inmueble=> inmueble.zona()}).isEmpty()) 
 		
 	method algunoLeConcretoUnInmuebleReservadoPorElOtro(otroEmpleado) = 
-		self.operacionesCerradas().map{operacion => operacion.inmueble()}.intersecion(otroEmpleado.inmueblesReservados())
+		not(self.operacionesCerradas().map{operacion => operacion.inmueble()}.intersecion(otroEmpleado.inmueblesReservados()).isEmpty()) 
 		or
-		otroEmpleado.operacionesCerradas().map{operacion => operacion.inmueble()}.intersecion(self.inmueblesReservados())
+		not(otroEmpleado.operacionesCerradas().map{operacion => operacion.inmueble()}.intersecion(self.inmueblesReservados()).isEmpty()) 
 }

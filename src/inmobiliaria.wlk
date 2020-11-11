@@ -13,6 +13,8 @@ object inmobiliaria {
 	
 	var criterioMejorEmpleado
 	
+	var valorFijoAlaCalle
+	
 	method porcentajeVenta() = porcentajeVenta
 	
 	method realizarOperacion(unaOperacion){
@@ -22,6 +24,8 @@ object inmobiliaria {
 	method mejorEmpleado() = criterioMejorEmpleado.averiguarlo()
 	
 	method empleados() = empleados
+	
+	method valorFijoAlaCalle() = valorFijoAlaCalle
 }
 
 

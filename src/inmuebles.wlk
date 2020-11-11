@@ -1,3 +1,4 @@
+import inmobiliaria.*
 
 class Inmueble {
 	
@@ -29,14 +30,11 @@ class Inmueble {
 		estaReservada = true
 	}
 	
-	method operacionPublicacion() = operacionPublicacion
-}
-
-class Casa inherits Inmueble{
-	var valor
+	method noEstaReservadoPor(unCliente) = unCliente != clienteQueLaReservo
 	
-	// Si es una casa, tiene un valor particular para esa casa.
-	method valor() = valor	
+	method operacionPublicacion() = operacionPublicacion
+	
+	method puedeSerVendido() = true
 }
 
 class PH inherits Inmueble{
@@ -46,8 +44,34 @@ class PH inherits Inmueble{
 
 class Depto inherits Inmueble{
 	// Los departamentos se tasan a 350.000 por ambiente
-	method valor() = 350000 * cantidadAmbientes
- 	
+	method valor() = 350000 * cantidadAmbientes 	
 }
 
+class Casa inherits Inmueble{
+	var valor
+	
+	// Si es una casa, tiene un valor particular para esa casa.
+	method valor() = valor	
+}
 
+class Local inherits Casa{
+	// galpon o aLaCalle
+	var tipoLocal 
+	
+	override method valor() = tipoLocal.calcularValorLocal(valor)
+	
+	override method puedeSerVendido() = false
+	// Me hubiera gustado poner esto 
+	// self.error("Los LOCALES NO pueden ser VENDIDOS")
+	// pero no me parecia dejar el metodo puedeSerVendido()	vacio
+	// en la super clase 
+		
+}
+
+object galpon{
+	method calcularValorLocal(unValor) = unValor / 2
+}
+
+object aLaCalle{
+	method calcularValorLocal(unValor) = unValor + inmobiliaria.valorFijoAlaCalle()
+}
