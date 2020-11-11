@@ -1,0 +1,21 @@
+import inmuebles.*
+import operacion.*
+import inmobiliaria.*
+import empleados.*
+
+
+describe "Punto 1"{
+	
+	var casota = new Casa(valor = 100000, tamanio = 200, cantidadAmbientes = 5, operacionPublicacion = "alquiler", zona = "lanus", estaReservada = false , clienteQueLaReservo = "leo" , empleadoQueLaReservo = "cra")
+	var alquilerCasota = new Alquiler(cantidadMeses = 5, inmueble = casota)
+	var ventaCasota = new Venta(inmueble = casota)
+	
+	test "Calculo correcto de la comision de un alquiler" {
+		assert.equals(alquilerCasota.comision(),10)
+	}	
+	
+	test "Calculo correcto de la comision de una venta" {
+		assert.equals(ventaCasota.comision(),20000)
+	}	
+	
+}
